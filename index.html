@@ -35,6 +35,8 @@
     box-shadow: 0 6px 30px rgba(0,0,0,.12);
     overflow: hidden;
   }
+  /* larger on-screen view; print stays true A4 */
+  @media screen and (min-width: 1040px) { .page { zoom: 1.25; margin: 10mm auto; } }
   @media print {
     body { background: #fff; }
     .page { margin: 0; box-shadow: none; }
