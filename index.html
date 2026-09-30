@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alon Gal – CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #16211f;
+    --ink-2: #44504d;
+    --muted: #7a8583;
+    --line: #dfe5e3;
+    --accent: #0d9a86;
+    --accent-soft: #e4f4f1;
+    --side: #f4f7f6;
+  }
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    background: #d9dedd;
+    font-family: "Assistant", system-ui, sans-serif;
+    color: var(--ink);
+    font-size: 10pt;
+    line-height: 1.5;
+  }
+  .page {
+    width: 210mm; height: 297mm;
+    margin: 12mm auto;
+    background: #fff;
+    display: grid;
+    grid-template-columns: minmax(0,1fr) 64mm;
+    box-shadow: 0 6px 30px rgba(0,0,0,.12);
+    overflow: hidden;
+  }
+  @media print {
+    body { background: #fff; }
+    .page { margin: 0; box-shadow: none; }
+  }
+
+  /* ---------- main column ---------- */
+  main { padding: 15mm 10mm 12mm 15mm; }
+  header { margin-bottom: 9mm; }
+  h1 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 700;
+    font-size: 30pt;
+    line-height: 1;
+    letter-spacing: -0.5px;
+  }
+  h1 .slash { color: var(--accent); font-family: "Assistant", sans-serif; font-weight: 800; margin-right: 2mm; }
+  .role {
+    margin-top: 2.5mm;
+    font-weight: 700;
+    font-size: 9.6pt;
+    letter-spacing: .9px;
+    white-space: nowrap;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .summary {
+    margin-top: 4mm;
+    color: var(--ink-2);
+    font-size: 10pt;
+    line-height: 1.5;
+    padding-left: 3.5mm;
+    border-left: 2px solid var(--accent);
+  }
+
+  h2 {
+    display: flex; align-items: center; gap: 3mm;
+    font-size: 8.5pt;
+    font-weight: 800;
+    letter-spacing: 2.2px;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin: 0 0 3.5mm;
+  }
+  h2::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+  section + section { margin-top: 6mm; }
+
+  .job { display: grid; grid-template-columns: 27mm 1fr; column-gap: 4mm; }
+  .job + .job { margin-top: 7mm; }
+  .org { font-weight: 700; font-size: 10pt; line-height: 1.25; }
+  .org small { display: block; font-weight: 400; font-size: 8.3pt; color: var(--muted); line-height: 1.3; margin-top: .6mm; }
+  .dates { font-size: 8.5pt; font-weight: 600; color: var(--muted); margin-top: .8mm; font-variant-numeric: tabular-nums; }
+
+  .title { font-weight: 700; font-size: 10pt; display: flex; justify-content: space-between; gap: 3mm; }
+  .title span { font-weight: 600; font-size: 8.5pt; color: var(--muted); white-space: nowrap; }
+
+  ul.b { list-style: none; margin-top: 1mm; }
+  ul.b li { position: relative; padding-left: 3.4mm; color: var(--ink-2); }
+  ul.b li + li { margin-top: .7mm; }
+  ul.b li::before {
+    content: ""; position: absolute; left: 0; top: .62em;
+    width: 1.4mm; height: 1.4mm; border-radius: 50%; background: var(--accent);
+  }
+
+  /* timeline for multiple roles at one org */
+  .roles { position: relative; }
+  .roles .r { position: relative; padding-left: 4.5mm; }
+  .roles .r + .r { margin-top: 3.4mm; }
+  .roles .r::before {
+    content: ""; position: absolute; left: 0; top: 1.5mm;
+    width: 2.2mm; height: 2.2mm; border-radius: 50%;
+    border: 1.5px solid var(--accent); background: #fff; z-index: 1;
+  }
+  .roles .r:first-child::before { background: var(--accent); }
+  .roles::before {
+    content: ""; position: absolute; left: 1.05mm; top: 2.5mm; bottom: 4mm;
+    width: 1.5px; background: var(--accent-soft);
+  }
+  .roles .r ul.b li::before { background: #9fd6cd; }
+
+  .tag {
+    display: inline-block; font-size: 7.3pt; font-weight: 700; letter-spacing: .8px; text-transform: uppercase;
+    color: var(--accent); background: var(--accent-soft); border-radius: 2px; padding: .2mm 1.4mm; margin-left: 1.5mm;
+    vertical-align: 1px;
+  }
+
+  .projects { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm 5mm; }
+  .proj b { display: block; font-size: 9.6pt; }
+  .proj p { color: var(--ink-2); font-size: 8.9pt; line-height: 1.35; }
+
+  /* ---------- side column ---------- */
+  aside {
+    background: var(--side);
+    padding: 15mm 9mm 12mm 8mm;
+    border-left: 1px solid var(--line);
+  }
+  aside section + section { margin-top: 6.5mm; }
+  aside h2 { font-size: 8pt; }
+
+  .contact { list-style: none; }
+  .contact li { display: flex; gap: 2.6mm; align-items: flex-start; margin-bottom: 2mm; font-size: 9pt; }
+  .contact svg { width: 3.6mm; height: 3.6mm; flex: none; margin-top: .5mm; stroke: var(--accent); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .contact a { color: inherit; text-decoration: none; }
+  .copy {
+    display: inline-flex; align-items: center; justify-content: center; margin-left: -1.8mm;
+    width: 4.2mm; height: 4.2mm; padding: 0;
+    background: transparent; border: 0; border-radius: 2px;
+    cursor: pointer; opacity: .55; transition: opacity .15s, background .15s;
+  }
+  .copy:hover { opacity: 1; background: var(--accent-soft); }
+  .copy span { display: none; }
+  .copy svg { width: 2.6mm; height: 2.6mm; margin: 0; stroke-width: 2.2; }
+  .copy.done { opacity: 1; }
+  @media print { .copy { display: none; } }
+
+  .group + .group { margin-top: 3mm; }
+  .group h3 { font-size: 8pt; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.4mm; }
+  .chips { display: flex; flex-wrap: wrap; gap: 1.3mm; }
+  .chips span {
+    font-size: 8.4pt; font-weight: 600; line-height: 1.2;
+    background: #fff; border: 1px solid var(--line); border-radius: 3px; padding: .8mm 1.8mm;
+  }
+
+  .edu .item + .item { margin-top: 2.6mm; }
+  .edu b { display: block; font-size: 9.3pt; line-height: 1.3; }
+  .edu span { display: block; color: var(--ink-2); font-size: 8.7pt; line-height: 1.3; }
+
+  .lang li { display: flex; justify-content: space-between; list-style: none; font-size: 9pt; }
+  .lang li + li { margin-top: 1.2mm; }
+  .lang span { color: var(--muted); font-size: 8.4pt; }
+
+  .about { list-style: none; color: var(--ink-2); font-size: 9pt; }
+  .about li + li { margin-top: 1mm; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <main>
+    <header>
+      <h1><span class="slash">\\</span>Alon Gal</h1>
+      <div class="role">Technical PM · GenAI · Software Engineer · Learning Designer</div>
+      <p class="summary">
+        Technical product manager and software engineer building GenAI-powered products. Combines product
+        thinking with hands-on engineering. Creative and people-driven, with a genuine love for education.
+      </p>
+    </header>
+
+    <section>
+      <h2>Experience</h2>
+
+      <div class="job">
+        <div>
+          <div class="org">Masterschool<small>Online tech education &amp; degree programs</small></div>
+          <div class="dates">2022 – Present</div>
+        </div>
+        <div class="roles">
+          <div class="r">
+            <div class="title">Technical Product Manager <span>2026 – Present</span></div>
+            <ul class="b">
+              <li>Building an AI-powered LMS for online degree programs, which faculty use to create and maintain course materials</li>
+              <li>Designing GenAI-based learning features, monitoring prompt and system quality, and shipping code to production</li>
+            </ul>
+          </div>
+          <div class="r">
+            <div class="title">Software Engineering School Lead <span>2023 – 2026</span></div>
+            <ul class="b">
+              <li>School leadership and curriculum architecture</li>
+              <li>Program strategy, structure, and academic standards</li>
+              <li>Managing 30+ instructors, mentors and content developers</li>
+            </ul>
+          </div>
+          <div class="r">
+            <div class="title">Software Engineering Instructor &amp; Course Designer <span>2022 – 2023</span></div>
+            <ul class="b">
+              <li>Curriculum, content and assessment creation for a software engineering career-training program</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="job">
+        <div>
+          <div class="org">Magshimim<small>Nationwide cyber education program for teenagers</small></div>
+          <div class="dates">2010 – 2022</div>
+        </div>
+        <div>
+          <div class="title">Education Content Creator &amp; Course Manager</div>
+          <ul class="b">
+            <li>Led development of the “Network Fundamentals” course: curriculum design, teaching and learning materials. Runs with ~500 students every year</li>
+            <li>Built and ran Cyber Security CTF challenges (Web-Sec) for hundreds of students at a time</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="job">
+        <div>
+          <div class="org">High Schools<small>Geula (Tel-Aviv), Beer-Sheva, Holon</small></div>
+          <div class="dates">2012 – 2022</div>
+        </div>
+        <div>
+          <div class="title">Computer Science &amp; Home-Room Teacher</div>
+          <ul class="b">
+            <li>Computer Science (Java), Computer Networks and Cyber (Python) for Bagrut</li>
+            <li>Home-room teacher for second-chance youth and deaf students; led social skills groups</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="job">
+        <div>
+          <div class="org">IDF<small>Technology unit</small></div>
+          <div class="dates">2004 – 2008</div>
+        </div>
+        <div>
+          <div class="title">Software Engineer</div>
+          <ul class="b">
+            <li>4-year service as a software engineer in a technology unit</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <aside>
+    <section>
+      <h2>Contact</h2>
+      <ul class="contact">
+        <li><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg><a class="em" href="#">email</a>
+          <button class="copy" type="button" aria-label="Copy email address" title="Copy email">
+            <svg viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></svg><span>Copy</span>
+          </button></li>
+        <li><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg><a href="https://www.linkedin.com/in/alongal24/">linkedin.com/in/alongal24</a></li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Tel-Aviv</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Skills</h2>
+      <div class="group">
+        <h3>GenAI &amp; Product</h3>
+        <div class="chips"><span>AI product management</span><span>LLM evals &amp; observability</span><span>Prompt &amp; context engineering</span><span>Agentic workflows</span></div>
+      </div>
+      <div class="group">
+        <h3>Engineering</h3>
+        <div class="chips"><span>Python</span><span>System architecture</span><span>AI-assisted development</span><span>Rapid prototyping</span><span>Deployment</span></div>
+      </div>
+      <div class="group">
+        <h3>Education</h3>
+        <div class="chips"><span>Learning theories</span><span>Curriculum architecture</span><span>Training program management</span></div>
+      </div>
+    </section>
+
+    <section class="edu">
+      <h2>Education</h2>
+      <div class="item"><b>BA, Psychology &amp; Education</b><span>Ben Gurion University</span></div>
+      <div class="item"><b>Teaching Certificate</b><span>Ben Gurion University</span></div>
+      <div class="item"><b>Software Design Course (C++)</b><span>IDF Technology Unit</span></div>
+      <div class="item"><b>High School</b><span>Hayovel, Kfar-Saba · Software Design &amp; AI, Math, Physics</span></div>
+    </section>
+
+    <section>
+      <h2>Languages</h2>
+      <ul class="lang">
+        <li>Hebrew <span>Native</span></li>
+        <li>English <span>Fluent</span></li>
+        <li>Israeli Sign Language <span>Experienced</span></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Beyond Work</h2>
+      <ul class="about">
+        <li>Cooking and exploring street food</li>
+        <li>Hardcore film buff</li>
+        <li>Football, mostly watching</li>
+      </ul>
+    </section>
+  </aside>
+
+</div>
+<script>
+  (() => {
+    const e = ['mr', 'alon', 'gal'].join('.') + String.fromCharCode(64) + ['gmail', 'com'].join('.');
+    document.querySelectorAll('.em').forEach(a => { a.href = 'mai' + 'lto:' + e; a.textContent = e; });
+    document.querySelectorAll('.copy').forEach(b => { b.dataset.copy = e; });
+  })();
+  document.querySelectorAll('.copy').forEach(btn => {
+    const label = btn.querySelector('span');
+    btn.addEventListener('click', async () => {
+      const text = btn.dataset.copy;
+      try { await navigator.clipboard.writeText(text); }
+      catch {
+        const t = document.createElement('textarea'); t.value = text; document.body.appendChild(t);
+        t.select(); document.execCommand('copy'); t.remove();
+      }
+      const icon = btn.querySelector('svg').innerHTML;
+      btn.classList.add('done'); btn.title = 'Copied!';
+      btn.querySelector('svg').innerHTML = '<path d="M20 6 9 17l-5-5"/>';
+      setTimeout(() => {
+        btn.classList.remove('done'); btn.title = 'Copy email';
+        btn.querySelector('svg').innerHTML = icon;
+      }, 1400);
+    });
+  });
+</script>
+</body>
+</html>
