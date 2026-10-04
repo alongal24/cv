@@ -52,7 +52,9 @@
     line-height: 1;
     letter-spacing: -0.5px;
   }
-  h1 .slash { color: var(--accent); font-family: "Assistant", sans-serif; font-weight: 800; margin-right: 2mm; }
+  /* decorative slashes drawn as shapes so they are not part of the name text */
+  h1 .slash { display: inline-block; margin-right: 2.6mm; }
+  h1 .slash i { display: inline-block; width: .085em; height: .72em; background: var(--accent); transform: skewX(20deg); margin-right: .13em; }
   .role {
     margin-top: 2.5mm;
     font-weight: 700;
@@ -76,7 +78,7 @@
     display: flex; align-items: center; gap: 3mm;
     font-size: 8.5pt;
     font-weight: 800;
-    letter-spacing: 2.2px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
     color: var(--ink);
     margin: 0 0 3.5mm;
@@ -94,27 +96,28 @@
   .title span { font-weight: 600; font-size: 8.5pt; color: var(--muted); white-space: nowrap; }
 
   ul.b { list-style: none; margin-top: 1mm; }
-  ul.b li { position: relative; padding-left: 3.4mm; color: var(--ink-2); font-size: 9.2pt; }
+  /* bullets and timeline avoid positioned elements so the PDF text
+     keeps document order for ATS parsers */
+  ul.b li { padding-left: 3.4mm; color: var(--ink-2); font-size: 9.2pt; }
   ul.b li + li { margin-top: .7mm; }
   ul.b li::before {
-    content: ""; position: absolute; left: 0; top: .62em;
+    content: ""; display: inline-block; vertical-align: .14em;
     width: 1.4mm; height: 1.4mm; border-radius: 50%; background: var(--accent);
+    margin-left: -3.4mm; margin-right: 2mm;
   }
 
   /* timeline for multiple roles at one org */
-  .roles { position: relative; }
-  .roles .r { position: relative; padding-left: 4.5mm; }
+  .roles {
+    background: linear-gradient(var(--accent-soft), var(--accent-soft)) no-repeat 1.05mm 2.5mm / 1.5px calc(100% - 6.5mm);
+  }
+  .roles .r { padding-left: 4.5mm; }
   .roles .r + .r { margin-top: 2.6mm; }
   .roles .r::before {
-    content: ""; position: absolute; left: 0; top: 1.5mm;
-    width: 2.2mm; height: 2.2mm; border-radius: 50%;
-    border: 1.5px solid var(--accent); background: #fff; z-index: 1;
+    content: ""; float: left; box-sizing: border-box;
+    width: 2.2mm; height: 2.2mm; margin: 1.5mm 2.3mm 0 -4.5mm; border-radius: 50%;
+    border: 1.5px solid var(--accent); background: #fff;
   }
   .roles .r:first-child::before { background: var(--accent); }
-  .roles::before {
-    content: ""; position: absolute; left: 1.05mm; top: 2.5mm; bottom: 4mm;
-    width: 1.5px; background: var(--accent-soft);
-  }
   .roles .r ul.b li::before { background: #9fd6cd; }
 
   .tag {
@@ -189,11 +192,11 @@
 
   <main>
     <header>
-      <h1><span class="slash">\\</span>Alon Gal</h1>
+      <h1><span class="slash" aria-hidden="true"><i></i><i></i></span>Alon Gal</h1>
       <div class="role">Technical PM · GenAI · Software Engineer · Learning Designer</div>
       <p class="summary">
         Technical product manager and software engineer building GenAI-powered products. Combines product
-        thinking with hands-on engineering. Creative, people&#8209;driven and loves education <svg class="heart" viewBox="0 0 24 24" aria-label="heart"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.8 4.5c2.1 0 3.6 1.2 5.2 3 1.6-1.8 3.1-3 5.2-3 3.8 0 5.9 3.9 4.4 7.3C19.5 16.4 12 21 12 21z"/></svg>
+        thinking with hands-on engineering. Creative, <span style="white-space:nowrap">people-driven</span> and loves education <svg class="heart" viewBox="0 0 24 24" aria-label="heart"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.8 4.5c2.1 0 3.6 1.2 5.2 3 1.6-1.8 3.1-3 5.2-3 3.8 0 5.9 3.9 4.4 7.3C19.5 16.4 12 21 12 21z"/></svg>
       </p>
     </header>
 
@@ -211,7 +214,7 @@
             <ul class="b">
               <li>Leading academic content operations and the academic feature roadmap for two accredited AAS degrees at a US college (Software Engineering &amp; AI, Business) with ~8k active students</li>
               <li>Designed and built an AI-powered LMS that faculty use to create, maintain and improve course materials</li>
-              <li>Shipped features from prototype to production with AI-assisted development</li>
+              <li>Shipped features from prototype to production with <span style="white-space:nowrap">AI-assisted</span> development</li>
               <li>Investigated errors with observability tools, and ran evals and A/B tests to guide fixes, model choices and prompts</li>
             </ul>
           </div>
@@ -248,7 +251,7 @@
 
       <div class="job">
         <div>
-          <div class="org">High Schools<small>Geula (Tel-Aviv), Beer-Sheva, Holon</small></div>
+          <div class="org">High Schools<small>Geula (Tel-Aviv), <span style="white-space:nowrap">Beer-Sheva</span>, Holon</small></div>
           <div class="dates">2012 – 2022</div>
         </div>
         <div>
